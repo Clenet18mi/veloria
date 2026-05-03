@@ -11,7 +11,7 @@ class TenantController extends Controller
     public function index()
     {
         return Inertia::render('SuperAdmin/Tenants', [
-            'tenants' => Tenant::all()
+            'tenants' => Tenant::with('subscriptions')->get()
         ]);
     }
 

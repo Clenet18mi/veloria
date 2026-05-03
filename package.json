@@ -21,6 +21,8 @@
     },
     "dependencies": {
         "@vite-pwa/assets-generator": "^1.0.2",
+        "@vueuse/core": "^14.3.0",
+        "@vueuse/motion": "^3.0.3",
         "fuse.js": "^7.3.0"
     }
 }

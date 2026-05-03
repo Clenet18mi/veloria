@@ -29,14 +29,17 @@ use App\Http\Controllers\SuperAdmin\TenantController;
 Route::middleware(['auth', 'verified', 'role:super_admin'])->prefix('admin')->group(function () {
     Route::get('tenants', [TenantController::class, 'index'])->name('admin.tenants');
 });
+use App\Http\Middleware\EnsurePlanFeature;
+
+// ...
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('reservations', ReservationController::class);
     Route::resource('billing', BillingController::class);
-    Route::resource('maintenance', MaintenanceController::class);
-    Route::resource('crm', CRMController::class);
-    Route::resource('reports', ReportController::class);
+    Route::resource('maintenance', MaintenanceController::class)->middleware(EnsurePlanFeature::class.':maintenance');
+    Route::resource('crm', CRMController::class)->middleware(EnsurePlanFeature::class.':crm');
+    Route::resource('reports', \App\Http\Controllers\ReportController::class)->middleware(EnsurePlanFeature::class.':reports');
     
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     // ...
 });
 
