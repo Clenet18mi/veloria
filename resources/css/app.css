@@ -1,0 +1,17 @@
+:root {
+  --amber: #f59e0b;
+  --sandy: #e2d1c3;
+  --terracotta: #cc5500;
+  --background: #fdfcf9;
+  --dark-background: #1a1a1a;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[var(--background)] text-slate-900;
+  }
+}
