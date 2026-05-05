@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('establishments', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('tenant_id')->constrained()->onDelete('cascade');
-            $table->string('name');
-            $table->string('address')->nullable();
-            $table->json('config')->nullable();
-            $table->timestamps();
-        });
+        if (! Schema::hasTable('establishments')) {
+            Schema::create('establishments', function (Blueprint $table) {
+                $table->id();
+                $table->foreignId('tenant_id')->constrained()->onDelete('cascade');
+                $table->string('name');
+                $table->string('address')->nullable();
+                $table->json('config')->nullable();
+                $table->timestamps();
+            });
+        }
     }
 
     /**

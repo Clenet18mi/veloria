@@ -11,19 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('rooms', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('establishment_id')->constrained()->onDelete('cascade');
-            $table->foreignId('room_type_id')->constrained()->onDelete('cascade');
-            $table->string('number');
-            $table->integer('floor');
-            $table->string('status')->default('available');
-            $table->text('notes')->nullable();
-            $table->timestamps();
+        if (! Schema::hasTable('rooms')) {
+            Schema::create('rooms', function (Blueprint $table) {
+                $table->id();
+                $table->foreignId('establishment_id')->constrained()->onDelete('cascade');
+                $table->foreignId('room_type_id')->constrained()->onDelete('cascade');
+                $table->string('number');
+                $table->integer('floor');
+                $table->string('status')->default('available');
+                $table->text('notes')->nullable();
+                $table->timestamps();
 
-            $table->unique(['establishment_id', 'number']);
-            $table->index('establishment_id');
-        });
+                $table->unique(['establishment_id', 'number']);
+                $table->index('establishment_id');
+            });
+        }
     }
 
     /**

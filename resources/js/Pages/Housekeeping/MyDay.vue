@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Head } from '@inertiajs/vue3'
-import EmployeeLayout from '@/layouts/EmployeeLayout.vue'
+import EmployeeLayout from '@/Layouts/EmployeeLayout.vue'
 
 defineProps<{ tasks: any[] }>()
 </script>

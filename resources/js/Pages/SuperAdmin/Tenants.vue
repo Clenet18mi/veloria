@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import DirectorLayout from '@/layouts/DirectorLayout.vue'
+import DirectorLayout from '@/Layouts/DirectorLayout.vue'
 defineProps<{ tenants: any[] }>()
 </script>
 

@@ -1,22 +1,32 @@
-.PHONY: up down test migrate seed fresh lint
+.PHONY: up down build test migrate seed fresh lint shell install
 
 up:
-	./vendor/bin/sail up
+	docker compose up -d
 
 down:
-	./vendor/bin/sail down
+	docker compose down
+
+build:
+	docker compose build
+
+install:
+	docker compose exec app composer install
+	docker compose exec vite npm install
 
 test:
-	./vendor/bin/sail test
+	docker compose exec app php artisan test
 
 migrate:
-	./vendor/bin/sail artisan migrate
+	docker compose exec app php artisan migrate
 
 seed:
-	./vendor/bin/sail artisan db:seed
+	docker compose exec app php artisan db:seed
 
 fresh:
-	./vendor/bin/sail artisan migrate:fresh --seed
+	docker compose exec app php artisan migrate:fresh --seed
 
 lint:
-	./vendor/bin/sail npm run lint
+	docker compose exec vite npm run lint
+
+shell:
+	docker compose exec app bash

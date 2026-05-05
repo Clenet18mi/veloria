@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Head } from '@inertiajs/vue3'
-import DirectorLayout from '@/layouts/DirectorLayout.vue'
+import DirectorLayout from '@/Layouts/DirectorLayout.vue'
 defineProps<{ stats: any }>()
 </script>
 

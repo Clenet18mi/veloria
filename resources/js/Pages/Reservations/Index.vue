@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Head } from '@inertiajs/vue3'
-import FrontDeskLayout from '@/layouts/FrontDeskLayout.vue'
-import ReservationGrid from '@/components/calendar/ReservationGrid.vue'
+import FrontDeskLayout from '@/Layouts/FrontDeskLayout.vue'
+import ReservationGrid from '@/Components/calendar/ReservationGrid.vue'
 
 defineProps<{ reservations: any[] }>()
 </script>
